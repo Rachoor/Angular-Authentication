@@ -6,19 +6,20 @@
 ## Running up docker image
 
   cd backend-service
-  docker compose build
-  docker compose up
+  docker-compose build
+  docker-compose up
 
 ### Get Live
   http://localhost:8000/
 
 
 # Front End Angular 7 and Django REST APIs
-  Node and Npm should be install
+  Node and Npm should be installed.
+  Also optionaly yarn can also be there.
   Refer this for more information, https://nodejs.org/en/
 
   cd frontend-service
-  npm install
+  npm install / yarn install (optional)
   ng serve --open
 
 ### Get Live
