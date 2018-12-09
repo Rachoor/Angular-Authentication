@@ -14,11 +14,12 @@
 
 
 # Front End Angular 7 and Django REST APIs
-  Node and Npm should be install
+  Node and Npm should be installed.
+  Also optionaly yarn can also be there.
   Refer this for more information, https://nodejs.org/en/
 
   cd frontend-service
-  npm install
+  npm install / yarn install (optional)
   ng serve --open
 
 ### Get Live
