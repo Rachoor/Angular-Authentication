@@ -6,8 +6,8 @@
 ## Running up docker image
 
   cd backend-service
-  docker compose build
-  docker compose up
+  docker-compose build
+  docker-compose up
 
 ### Get Live
   http://localhost:8000/
