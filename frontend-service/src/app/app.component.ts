@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import {ApputilsService} from './apputils.service';
-import {AuthService} from './auth.service'
+import { ApputilsService } from './apputils.service';
+import { AuthService } from './auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
 })
 export class AppComponent {
-  title = 'frontend-service'
-  guest = 'guest'
-  isLoggedIn = false
-  constructor(
-    public apputils: ApputilsService,
-    public auth: AuthService
-  ){
-    this.isLoggedIn = (this.auth.getAuthState()==="true");
+  title = 'frontend-service';
+  guest = 'guest';
+  isLoggedIn = false;
+  constructor(public apputils: ApputilsService, public auth: AuthService) {
+    this.isLoggedIn = this.auth.getAuthState() === 'true';
   }
-  logout(){
+  logout() {
     this.auth.logout();
+    this.isLoggedIn = false;
   }
 }

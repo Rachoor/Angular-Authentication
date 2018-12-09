@@ -13,9 +13,9 @@ import { LoginComponent } from './components/user/login/login.component';
 import { Notfound404Component } from './components/notfound404/notfound404.component';
 
 //all services
-import {AuthService} from './auth.service'
-import {ApputilsService} from './apputils.service'
-import {BackendService} from './backend.service'
+import { AuthService } from './auth.service';
+import { ApputilsService } from './apputils.service';
+import { BackendService } from './backend.service';
 
 @NgModule({
   declarations: [
@@ -23,16 +23,16 @@ import {BackendService} from './backend.service'
     ProductsComponent,
     CategoryComponent,
     LoginComponent,
-    Notfound404Component
+    Notfound404Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthService, ApputilsService, BackendService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

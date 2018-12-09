@@ -4,10 +4,10 @@ import { ApputilsService } from './apputils.service';
 import { AuthService } from './auth.service';
 import { HttpHeaders } from '@angular/common/http';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BackendService {
-  baseUrl = "http://localhost:8000"
+  baseUrl = 'http://localhost:8000';
   constructor(
     public http: HttpClient,
     public auth: AuthService,
@@ -15,79 +15,62 @@ export class BackendService {
   ) {
     console.log(this.auth.getClientAccessToken());
   }
+  setHeaders() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.apputils.getLocalStorage('accessToken'),
+      }),
+    };
+    return httpOptions;
+  }
 
   getAllCategories() {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-        })
-      };
-    return this.http.get(this.baseUrl + '/category/', httpOptions)
+    return this.http.get(this.baseUrl + '/category/', this.setHeaders());
   }
-  addNewCategory(category){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.post(this.baseUrl + '/category/', category, httpOptions)
+  addNewCategory(category) {
+    return this.http.post(
+      this.baseUrl + '/category/',
+      category,
+      this.setHeaders()
+    );
   }
-  addNewProduct(product){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.post(this.baseUrl + '/products/', product, httpOptions)
+  addNewProduct(product) {
+    return this.http.post(
+      this.baseUrl + '/products/',
+      product,
+      this.setHeaders()
+    );
   }
   getAllProducts() {
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-        })
-      };
-    return this.http.get(this.baseUrl + '/products/', httpOptions)
+    return this.http.get(this.baseUrl + '/products/', this.setHeaders());
   }
-  removeCategory(id){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.delete(this.baseUrl + '/category/'+id, httpOptions)
+  removeCategory(id) {
+    return this.http.delete(
+      this.baseUrl + '/category/' + id,
+      this.setHeaders()
+    );
   }
-  removeProduct(id){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.delete(this.baseUrl + '/products/'+id, httpOptions)
+  removeProduct(id) {
+    return this.http.delete(
+      this.baseUrl + '/products/' + id,
+      this.setHeaders()
+    );
   }
 
-  updateProduct(id, data){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.put(this.baseUrl + '/products/'+id+'/', data,  httpOptions)
+  updateProduct(id, data) {
+    return this.http.put(
+      this.baseUrl + '/products/' + id + '/',
+      data,
+      this.setHeaders()
+    );
   }
 
-  updateCategory(id, data){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.apputils.getLocalStorage('accessToken')
-      })
-    };
-  return this.http.put(this.baseUrl + '/category/'+id+'/', data,  httpOptions)
+  updateCategory(id, data) {
+    return this.http.put(
+      this.baseUrl + '/category/' + id + '/',
+      data,
+      this.setHeaders()
+    );
   }
 }
